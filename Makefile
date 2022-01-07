@@ -12,7 +12,7 @@ problem1: request.o
 	$(LEX) -o $(patsubst %.l,%.lex.c,$<) $<
 
 %.tab.c %.tab.h: %.y
-	$(YACC) -d $<
+	$(YACC) -d -t -Wcounterexamples $<
 
 .PHONY: clean
 

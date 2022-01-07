@@ -1,3 +1,4 @@
+%option noyywrap
 %{
     #include<stdio.h>
     #include "request.tab.h"
@@ -14,11 +15,11 @@ fieldvalue                              {string}|{num}
 %%
 
 (GET|HEAD|POST|PUT|DELETE|OPTIONS)      { yylval = strclone(yytext); return METHOD; }
-HTTP\/{num}                             { return VERSION; }
-{id}                                    { return ID; }
+HTTP\/{num}                             { yylval = strclone(yytext); return VERSION; }
+{id}                                    { yylval = strclone(yytext); return ID; }
 "/"                                     { return SLASH; }
 "\n"                                    { return NEWLINE; }
-{string}                                { return STRING; }
+{string}                                { yylval = strclone(yytext); return STRING; }
 ":"                                     { return COLON; }
 [ \t\n]+                                       ;
 . {

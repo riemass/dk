@@ -57,7 +57,7 @@ HEADERS: HEADER {
 ;
 
 HEADER: ID COLON STRING {
-        $$ = (char *)malloc(sizeof(char)*(strlen($1)+1+strlen($2)+1));
+        $$ = (char *)malloc(sizeof(char)*(strlen($1)+1+strlen($3)+1));
         sprintf($$, "%s:%s", $1, $3);
     }
 ;

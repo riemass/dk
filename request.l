@@ -1,5 +1,6 @@
 %option noyywrap
 %{
+    #define YYSTYPE char*
     #include<stdio.h>
     #include "request.tab.h"
     char *strclone(char *str);
